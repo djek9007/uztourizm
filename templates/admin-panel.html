@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Административная панель{% endblock %}
+
+{% block content %}
+<div class="panel">
+						<div class="panel__block-header block-header">
+							<h1 class="block-header__title">Добро пожаловать!</h1>
+							<p class="block-header__text">Административная панель для руководителя</p>
+						</div>
+						<div class="panel__admin-actions admin-actions">
+							<div class="admin-actions__item">
+								<button type="button" class="admin-actions__button">
+									<img src="{% static 'img/admin-panel/on.svg' %}" alt="Система оплаты" class="admin-actions__image" />
+								</button>
+								<div class="admin-actions__title">Система оплаты</div>
+								<p class="admin-actions__text">Нажмите чтобы включить/выключить систему оплаты</p>
+							</div>
+							<div class="admin-actions__item">
+								<button type="button" class="admin-actions__button">
+									<img src="{% static 'img/admin-panel/off.svg' %}" alt="Модель" class="admin-actions__image" />
+								</button>
+								<div class="admin-actions__title">Модель</div>
+								<p class="admin-actions__text">Нажмите чтобы включить/выключить модель</p>
+							</div>
+							<div class="admin-actions__item">
+								<button type="button" class="admin-actions__button">
+									<img src="{% static 'img/admin-panel/on.svg' %}" alt="Тестовый период" class="admin-actions__image" />
+								</button>
+								<div class="admin-actions__title">Тестовый период</div>
+								<p class="admin-actions__text">Нажмите чтобы включить/выключить тестовый период</p>
+							</div>
+						</div>
+						<div class="panel__actions">
+							<a href="form-payment.html" class="panel__button button">Сгенерировать QR</a>
+							<a href="#" data-popup="#popup" class="panel__button button">Изменить сумму</a>
+						</div>
+						<div class="panel__table table">
+							<h2 class="table__title">История оплаты</h2>
+							<div class="table__line">
+								<div class="table__label">Все транзакции</div>
+								<form action="#" class="table__form form-table">
+									<select name="form[]" data-class-modif="form">
+										<option value="1" selected>Все</option>
+										<option value="2">Определенные</option>
+										<option value="3">Пункт №3</option>
+										<option value="4">Пункт №4</option>
+									</select>
+									<div class="form-table__actions">
+										<button type="submit" class="form-table__search">
+											<svg width="12.385498" height="12.385498" viewBox="0 0 12.3855 12.3855" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+												<desc>Created with Pixso.</desc>
+												<defs />
+												<path id="icon" d="M8.56 9.5C7.66 10.2 6.53 10.62 5.3 10.62C2.37 10.62 0 8.24 0 5.31C0 2.37 2.37 0 5.3 0C8.24 0 10.61 2.37 10.61 5.31C10.61 6.53 10.2 7.66 9.5 8.56L12.19 11.25C12.45 11.51 12.45 11.93 12.19 12.19C11.93 12.45 11.51 12.45 11.25 12.19L8.56 9.5ZM9.29 5.31C9.29 7.51 7.5 9.29 5.3 9.29C3.11 9.29 1.32 7.51 1.32 5.31C1.32 3.11 3.11 1.32 5.3 1.32C7.5 1.32 9.29 3.11 9.29 5.31Z" fill="#868FA0" fill-opacity="1.000000" fill-rule="evenodd" />
+											</svg>
+										</button>
+										<input autocomplete="off" type="text" name="search" required placeholder="Поиск" class="form-table__input input" />
+									</div>
+									<div class="form-table__date">
+										<label class="form-table__label">
+											<svg width="12.385498" height="12.385498" viewBox="0 0 12.3855 12.3855" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+												<defs />
+												<path id="icon" d="M1.76 0C0.79 0 0 0.79 0 1.76L0 10.61C0 11.59 0.79 12.38 1.76 12.38L10.61 12.38C11.59 12.38 12.38 11.59 12.38 10.61L12.38 1.76C12.38 0.79 11.59 0 10.61 0L1.76 0ZM3.53 4.86L3.53 7.51L1.32 7.51L1.32 4.86L3.53 4.86ZM1.32 8.4L1.32 10.61C1.32 10.86 1.52 11.05 1.76 11.05L3.53 11.05L3.53 8.4L1.32 8.4ZM4.42 8.4L4.42 11.05L7.07 11.05L7.07 8.4L4.42 8.4ZM7.96 8.4L7.96 11.05L10.61 11.05C10.86 11.05 11.05 10.86 11.05 10.61L11.05 8.4L7.96 8.4ZM7.96 7.51L7.96 4.86L11.05 4.86L11.05 7.51L7.96 7.51ZM7.07 4.86L4.42 4.86L4.42 7.51L7.07 7.51L7.07 4.86ZM2.87 3.09C3.24 3.09 3.53 2.79 3.53 2.43C3.53 2.06 3.24 1.76 2.87 1.76L1.99 1.76C1.62 1.76 1.32 2.06 1.32 2.43C1.32 2.79 1.62 3.09 1.99 3.09L2.87 3.09ZM6.41 3.09C6.78 3.09 7.07 2.79 7.07 2.43C7.07 2.06 6.78 1.76 6.41 1.76L5.08 1.76C4.72 1.76 4.42 2.06 4.42 2.43C4.42 2.79 4.72 3.09 5.08 3.09L6.41 3.09ZM11.05 2.43C11.05 2.79 10.76 3.09 10.39 3.09L8.62 3.09C8.25 3.09 7.96 2.79 7.96 2.43C7.96 2.06 8.25 1.76 8.62 1.76L10.39 1.76C10.76 1.76 11.05 2.06 11.05 2.43Z" fill="#464F60" fill-opacity="1.000000" fill-rule="evenodd" />
+											</svg>
+										</label>
+										<input data-datepicker type="text" name="date" class="form-table__datepicker" />
+									</div>
+								</form>
+							</div>
+							<div class="table__body">
+								<table class="table__main main-table">
+									<tr>
+										<th class="main-table__title">Описание</th>
+										<th class="main-table__title">ID</th>
+										<th class="main-table__title">Номер карты</th>
+										<th class="main-table__title">Дата и время</th>
+										<th class="main-table__title">Сумма</th>
+										<th class="main-table__title">Чек</th>
+									</tr>
+
+									<tr>
+										<td data-cell="Описание" class="main-table__text">Покупка билета</td>
+										<td data-cell="ID" class="main-table__text">#000001</td>
+										<td data-cell="Номер карты" class="main-table__text">**** 1234</td>
+										<td data-cell="Дата и время" class="main-table__text">
+											<time datetime="04-28T12:30">28 апр, 12:30</time>
+										</td>
+										<td data-cell="Сумма" class="main-table__text"><span>+$230</span></td>
+										<td data-cell="Чек" class="main-table__text">
+											<button type="button" class="main-table__button">Загрузить</button>
+										</td>
+									</tr>
+									<tr>
+										<td data-cell="Описание" class="main-table__text">Покупка билета</td>
+										<td data-cell="ID" class="main-table__text">#000001</td>
+										<td data-cell="Номер карты" class="main-table__text">**** 1234</td>
+										<td data-cell="Дата и время" class="main-table__text">
+											<time datetime="04-28T12:30">28 апр, 12:30</time>
+										</td>
+										<td data-cell="Сумма" class="main-table__text"><span>+$230</span></td>
+										<td data-cell="Чек" class="main-table__text">
+											<button type="button" class="main-table__button">Загрузить</button>
+										</td>
+									</tr>
+									<tr>
+										<td data-cell="Описание" class="main-table__text">Покупка билета</td>
+										<td data-cell="ID" class="main-table__text">#000001</td>
+										<td data-cell="Номер карты" class="main-table__text">**** 1234</td>
+										<td data-cell="Дата и время" class="main-table__text">
+											<time datetime="04-28T12:30">28 апр, 12:30</time>
+										</td>
+										<td data-cell="Сумма" class="main-table__text"><span>+$230</span></td>
+										<td data-cell="Чек" class="main-table__text">
+											<button type="button" class="main-table__button">Загрузить</button>
+										</td>
+									</tr>
+									<tr>
+										<td data-cell="Описание" class="main-table__text">Покупка билета</td>
+										<td data-cell="ID" class="main-table__text">#000001</td>
+										<td data-cell="Номер карты" class="main-table__text">**** 1234</td>
+										<td data-cell="Дата и время" class="main-table__text">
+											<time datetime="04-28T12:30">28 апр, 12:30</time>
+										</td>
+										<td data-cell="Сумма" class="main-table__text"><span>+$230</span></td>
+										<td data-cell="Чек" class="main-table__text">
+											<button type="button" class="main-table__button">Загрузить</button>
+										</td>
+									</tr>
+									<tr>
+										<td data-cell="Описание" class="main-table__text">Покупка билета</td>
+										<td data-cell="ID" class="main-table__text">#000001</td>
+										<td data-cell="Номер карты" class="main-table__text">**** 1234</td>
+										<td data-cell="Дата и время" class="main-table__text">
+											<time datetime="04-28T12:30">28 апр, 12:30</time>
+										</td>
+										<td data-cell="Сумма" class="main-table__text"><span>+$230</span></td>
+										<td data-cell="Чек" class="main-table__text">
+											<button type="button" class="main-table__button">Загрузить</button>
+										</td>
+									</tr>
+								</table>
+								<div class="pagination">
+									<button type="button" class="pagination__arrow pagination__arrow--prev">Пред.</button>
+									<div class="pagination__pages">
+										<button class="pagination__page _current-page">1</button>
+										<button class="pagination__page">2</button>
+										<button class="pagination__page">3</button>
+									</div>
+									<button type="button" class="pagination__arrow pagination__arrow--next">След.</button>
+								</div>
+							</div>
+						</div>
+					</div>
+{% endblock %}

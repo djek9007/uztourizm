@@ -1,0 +1,94 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <title>Вход</title>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .is-invalid {
+            border-color: red;
+            background-color: #fdd;
+        }
+
+        .form-login__errors {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper wrapper--decor">
+        <div class="login">
+            <form method="post" action="{% url 'login' %}" class="login__form form-login">
+                {% csrf_token %}
+                <h1 class="form-login__title">Вход</h1>
+
+                <!-- Выводим общие ошибки формы -->
+                {% if form.non_field_errors %}
+                <div class="form-login__errors">
+                    {% for error in form.non_field_errors %}
+                    <p class="mb-0">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Поле для логина -->
+                <div class="form-login__item">
+                    <input autocomplete="off" type="text" name="username" required placeholder="Логин" class="form-login__input input {% if form.username.errors %}is-invalid{% endif %}" value="{{ form.username.value|default_if_none:'' }}">
+                    {% if form.username.errors %}
+                    <div class="error">
+                        {% for error in form.username.errors %}
+                        <p class="mb-0">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Поле для пароля -->
+                <div class="form-login__item">
+                    <input autocomplete="off" type="password" name="password" required placeholder="Пароль" class="form-login__input input {% if form.password.errors %}is-invalid{% endif %}">
+                    {% if form.password.errors %}
+                    <div class="error">
+                        {% for error in form.password.errors %}
+                        <p class="mb-0">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Дополнительные элементы формы -->
+                <div class="form-login__line">
+                    <div class="checkbox">
+                        <input type="checkbox" name="remember_me" id="remember_me">
+    <label for="remember_me">Запомнить меня</label>
+                    </div>
+                    <a href="{% url 'password_reset' %}" class="form-login__link">Забыли пароль?</a>
+                </div>
+
+                <!-- Кнопка входа -->
+                <button type="submit" class="form-login__button button">Войти</button>
+
+
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/app.min.js' %}"></script>
+</body>
+
+</html>

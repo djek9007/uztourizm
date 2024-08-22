@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Добавление нового кассира{% endblock %}
+
+{% block content %}
+<div class="container">
+        <h1>Добавление кассира</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Рендерим форму -->
+            <button type="submit">Добавить кассира</button>
+        </form>
+        <a href="{% url 'admin_panel' %}">Назад к панели администратора</a>
+    </div>
+{% endblock %}
